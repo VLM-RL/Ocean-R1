@@ -150,12 +150,12 @@ We sincerely thank [verl](https://github.com/volcengine/verl) (our initial codeb
 
 ## 📚 Contributors and Citation
 
-Contributors: [Lingfeng Ming](https://scholar.google.com/citations?user=QOMvlswAAAAJ&hl=zh-CN), Youwei Zhang, [Yadong Li](https://scholar.google.com/citations?user=VLfXcYIAAAAJ&hl=en), Song Chen, Jianhua Xu, Zenan Zhou, Weipeng Chen. 
+Contributors: [Lingfeng Ming](https://scholar.google.com/citations?user=QOMvlswAAAAJ&hl=zh-CN), [Yadong Li](https://scholar.google.com/citations?user=VLfXcYIAAAAJ&hl=en), Song Chen, Jianhua Xu, Zenan Zhou, Weipeng Chen. 
 
 If you find this work useful, please cite it as follows:
 ```bib
 @misc{ming2025oceanr1,
-  author       = {Lingfeng Ming, Youwei Zhang, Yadong Li, Song Chen, Jianhua Xu, Zenan Zhou, Weipeng Chen},
+  author       = {Lingfeng Ming, Yadong Li, Song Chen, Jianhua Xu, Zenan Zhou, Weipeng Chen},
   title        = {Ocean-R1: An Open and Generalizable Large Vision-Language Model enhanced by Reinforcement Learning},
   howpublished = {\url{https://github.com/VLM-RL/Ocean-R1}},
   note         = {Accessed: 2025-04-03},

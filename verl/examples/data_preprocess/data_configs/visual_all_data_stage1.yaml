@@ -1,0 +1,4 @@
+datasets:
+    - json_path: /data_train2/mllm/minglingfeng/mllm_data/processed_data/r1_data/geoqa_8k.jsonl
+    - json_path: /data_train2/mllm/minglingfeng/mllm_data/processed_data/r1_data/fixed_mmpr_data_55k.jsonl
+    - json_path: /data_train2/mllm/minglingfeng/mllm_data/processed_data/r1_data/mvmath_1k_2img.jsonl

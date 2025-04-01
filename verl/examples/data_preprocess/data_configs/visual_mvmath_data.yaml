@@ -1,0 +1,2 @@
+datasets:
+    - json_path: /data_train2/mllm/minglingfeng/mllm_data/processed_data/r1_data/mvmath_1k_2img.jsonl
