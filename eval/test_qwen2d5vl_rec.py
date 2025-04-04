@@ -21,7 +21,8 @@ sample_num = None #500
 is_baseline = False
 
 MODEL_PATH_list = [
-   "/global_data/mllm/minglingfeng/models/Qwen2.5-VL-3B-Instruct",
+    "minglingfeng/Ocean_R1_3B_Instruct",
+    "minglingfeng/Ocean_R1_7B_Instruct",
 ]
 
 for MODEL_PATH in MODEL_PATH_list:

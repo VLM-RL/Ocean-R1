@@ -12,7 +12,8 @@ from math_verify import parse, verify
 # Qwen2VLImageProcessor
 MODEL_PATH_list = [
     
-    "/data_train2/mllm/minglingfeng/models/Qwen2.5-VL-7B-Instruct",
+    "minglingfeng/Ocean_R1_3B_Instruct",
+    "minglingfeng/Ocean_R1_7B_Instruct",
 
 ]
 

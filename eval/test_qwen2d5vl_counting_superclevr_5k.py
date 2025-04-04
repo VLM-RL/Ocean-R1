@@ -7,9 +7,8 @@ import re
 
 
 MODEL_PATH_list = [
-    "/data_train2/mllm/minglingfeng/models/Qwen2.5-VL-3B-Instruct",
-    "/data_train2/mllm/minglingfeng/models/Qwen2.5-VL-7B-Instruct",
-
+    "minglingfeng/Ocean_R1_3B_Instruct",
+    "minglingfeng/Ocean_R1_7B_Instruct",
 ]
 
 for MODEL_PATH in MODEL_PATH_list:
@@ -41,7 +40,7 @@ for MODEL_PATH in MODEL_PATH_list:
             data.append(json.loads(line))
 
 
-    QUESTION_TEMPLATE = "{Question} First output the thinking process in <think> </think> and final answer (number) in <answer> </answer> tags."
+    QUESTION_TEMPLATE = "{Question} You FIRST think about the reasoning process as an internal monologue and then provide the final answer. The reasoning process MUST BE enclosed within <think> </think> tags. The final answer MUST BE in <answer> </answer> tags."
 
     messages = []
 

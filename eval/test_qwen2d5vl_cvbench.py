@@ -16,7 +16,7 @@ import os
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_path', default="/global_data/mllm/minglingfeng/models/Qwen2.5-VL-3B-Instruct", type=str) # Base model: "Qwen/Qwen2-VL-2B-Instruct"
+    parser.add_argument('--model_path', default="minglingfeng/Ocean_R1_3B_Instruct", type=str) # Base model: "Qwen/Qwen2-VL-2B-Instruct"
     parser.add_argument('--bs', default=8, type=int) # reduce it if GPU OOM
     parser.add_argument('--output_dir', default="/data_train2/mllm/minglingfeng/code/verl/eval/logs/results", type=str)
     parser.add_argument("--precomputed_json", type=str)

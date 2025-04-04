@@ -29,7 +29,7 @@ def get_eval_config():
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 def prepare_test_messages(testset_path):
     testset_data = pd.read_json(testset_path, lines=True).to_dict(orient="records")
-    QUESTION_TEMPLATE = "{Question} Output the thinking process in <think> </think> and final answer (number) in <answer> </answer> tags."
+    QUESTION_TEMPLATE = "{Question} You FIRST think about the reasoning process as an internal monologue and then provide the final answer. The reasoning process MUST BE enclosed within <think> </think> tags. The final answer MUST BE in <answer> </answer> tags."
     tested_messages = []
     for i in testset_data:
         message = [{
