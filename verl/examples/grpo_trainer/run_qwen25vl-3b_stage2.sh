@@ -15,7 +15,7 @@ export LIMIT_IMAGE_NUM=1
 wandb_project_name='verl_grpo'
 wandb_experiment_name='3B-qwen2d5vl_stage1'
 kl_coef=0.001
-lr=6e-7
+lr=8e-7
 
 # Paths
 # MODEL_PATH="Qwen/Qwen2.5-VL-3B-Instruct"
@@ -53,7 +53,7 @@ ray job submit --address="http://127.0.0.1:8265" \
     algorithm.adv_estimator=grpo \
     data.train_files="${TRAIN_FILE}" \
     data.val_files="${TEST_FILE}" \
-    data.train_batch_size=512 \
+    data.train_batch_size=256 \
     data.max_prompt_length=8192 \
     data.max_response_length=4096 \
     data.filter_overlong_prompts=True \
@@ -62,7 +62,7 @@ ray job submit --address="http://127.0.0.1:8265" \
     actor_rollout_ref.model.path=$MODEL_PATH \
     actor_rollout_ref.actor.optim.lr=1e-6 \
     actor_rollout_ref.model.use_remove_padding=True \
-    actor_rollout_ref.actor.ppo_mini_batch_size=512 \
+    actor_rollout_ref.actor.ppo_mini_batch_size=256 \
     actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu=8 \
     actor_rollout_ref.actor.use_kl_loss=True \
     actor_rollout_ref.actor.kl_loss_coef=$kl_coef \

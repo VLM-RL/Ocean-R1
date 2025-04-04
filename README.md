@@ -52,10 +52,10 @@ To address these limitations, we propose **Ocean-R1**, a two-stage rule-based RL
 <a id="examples"></a>
 | Examples of Reflection Patterns on GeoQA| 
 |----------|
-| <span style="color: blue;">**However, this calculation seems to have an error. Let's re-evaluate the problem.****</span>| 
-| <span style="color: blue;">However, upon rechecking the problem constraints and the logical steps, it appears there was a misinterpretation in the problem statement or a need to re-evaluate the given information. Given the problem constraints and the standard geometric properties, the correct answer should be recalculated as follows:**</span> | 
+| <span style="color: blue;">**However, this calculation seems to have an error. Let's re-evaluate the problem.**</span>| 
+| <span style="color: blue;">**However, upon rechecking the problem constraints and the logical steps, it appears there was a misinterpretation in the problem statement or a need to re-evaluate the given information. Given the problem constraints and the standard geometric properties, the correct answer should be recalculated as follows:**</span> | 
 | <span style="color: blue;">Since CP = CD - DP = 8 - 16 = -8, **which is not possible, we need to re-evaluate the setup.**</span> | 
-| <span style="color: blue;">**However, this calculation is incorrect. Let's re-evaluate:**() </span>| 
+| <span style="color: blue;">**However, this calculation is incorrect. Let's re-evaluate:** </span>| 
 | Therefore, angle A = angle ADO. Given that angle D = 50°, we have angle A = angle ADO = 50°. Since DE is parallel to OA, we have angle AOD = angle A + angle ADO = 100°. Since CD is the diameter, we have angle C = 90° - angle AOD = 90° - 100° = -10°. <span style="color: blue;">**However, this calculation is incorrect. Let's re-evaluate:** </span>Since DE is parallel to OA, we have angle AOD = 2 * angle D = 100°. Therefore, angle C = 90° - angle AOD = 90° - 100° = -10°. <span style="color: blue;">**This is still incorrect. Let's re-evaluate correctly:**| 
 | <span style="color: blue;">**However, this contradicts the given conditions. Therefore, we need to re-evaluate the correct proportion,** which is \( \frac{AB}{AC} = \frac{AD}{AB} \). | 
 | Therefore, \( PM = \frac{1}{2} AD \) and \(QN = \frac{1}{2} BC \). Given that \( MP + NQ = 14 \) and \( AC + BC = 18 \), we have \( \frac{1}{2} AC + \frac{1}{2} BC = 14 \). Thus, \( AC + BC = 28 \). <span style="color: blue;">**However, we are given that \( AC + BC = 18 \), which seems to be a contradiction. Revising the given conditions, we use the correct relationship:** | 
@@ -63,7 +63,7 @@ To address these limitations, we propose **Ocean-R1**, a two-stage rule-based RL
 | <span style="color: blue;">**Given the options, it seems there might be a misunderstanding in the problem statement or the options provided.** | 
 | <span style="color: blue;">**However, there seems to be a miscalculation in the above reasoning. Let's re-evaluate using the properties of...** |
 
-- **Visual Aha Moment**: Our findings indicate that in multimodal reasoning scenarios, rule-based reinforcement learning (RL) training of the Qwen2.5vl-3B-Instruct and Qwen2.5vl-7B-Instruct models can elicit emergent behaviors such as reflection and verification, which are akin to "Aha Moment". Table [1](#examples) presents specific instances of these reflective and verification behaviors.
+- **Visual Aha Moment**: Our findings indicate that in multimodal reasoning scenarios, rule-based reinforcement learning (RL) training of the Qwen2.5-VL-3B-Instruct and Qwen2.5-VL-7B-Instruct models can elicit emergent behaviors such as reflection and verification, which are akin to "Aha Moment". Table [1](#examples) presents specific instances of these reflective and verification behaviors.
 
 - **The Training Dynamic of Reasoning Behaviors**: Figure [1](#training_curve) depicts the evolution of reasoning behavior counts during model training on the GeoQA dataset. Notably, distinct models exhibit divergent trends in reasoning behavior changes. The accuracy rate increases with the increase of reflective behavior. When the model learns to reason, reflective behavior decreases. Notably, multiple reflections may not necessarily produce the correct outcomes, as illustrated in the cases outlined in Table [2](#cases).
 
