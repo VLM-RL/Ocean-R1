@@ -7,10 +7,15 @@
 
 Current implementations of [DeepSeek R1](https://arxiv.org/abs/2501.12948) framework in multimodal settings have predominantly concentrated on unimodal task specialization (e.g., mathematical reasoning, visual-spatial analysis, referring expression comprehension (REC), or visual counting). This narrow focus induces catastrophic forgetting - where optimization for isolated task domains compromises model generalization through capacity competition in shared neural substrates. Furthermore, while existing reproductions prioritize base models due to stability concerns during reinforcement learning (RL) exploration, the critical question of metacognitive emergence ("Aha Moments") in instruction model like Qwen2.5-VL-Instruct remains unaddressed.
 
-To address these limitations, we propose **Ocean-R1**, a two-stage rule-based RL framework for multimodal intelligence enhancement. Specifically, the first stage is used to strengthen the model's reasoning ability and the second stage is used to improve visual perception. Our experiments demonstrate that our approach successfully induces metacognitive emergence in Qwen2.5-VL-Instruct, achieving:
+To address these limitations, we propose **Ocean-R1**, a two-stage rule-based RL framework for multimodal intelligence enhancement. Specifically, the first stage is used to strengthen the model's reasoning ability and the second stage is used to improve visual perception. Our experiments show that our approach successfully induces the emergence of metacognition in Qwen2.5-VL-Instruct (3B/7B), achieving significant improvements on multiple tasks:
 
-- MathVision
--
+- Visual Math: MathVision (+2.7/+2.7), MathVerse (+3.2/+1.4), and MathVista (+4.9/+4.4),
+- Geometric Reasoning: GeoQA (+17.5/+22.2),
+- Visual Counting: SuperCLEVR (+23.2/+22.6),
+- Referring Expression Comprehension (REC): RefCOCO/+/g Avg (+10.2/+1.7),
+- Visual Spatial Reasoning: CVBench (+9.3/+6.5),
+- OCR: OCR Bench (+9.9/+5.6).
+
 
 
 🔥We open-source our complete pipeline to foster further research in this area. We release all our codes, model, data. We apply the awesome [verl](https://github.com/volcengine/verl) framework to train our models. 
@@ -35,9 +40,9 @@ To address these limitations, we propose **Ocean-R1**, a two-stage rule-based RL
 
 | Model       | SuperCLEVR       |GEOQA       |RefCOCO/+/g AVG    |CVBench |OCR Bench|MathVision       |MathVista       |MathVerse       |
 |:-----------|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|
-| Qwen2.5-VL-3B-Instruct   |64.1    |38.9    |75.3    |66.5    |74.6    |21.2   |62.3    | xxx|
-| Ocean-R1-3B-Instruct   | **87.3**   |**56.4**    |**85.5**    |**75.8**   |xx    |xxx    |**67.2**    |xxx|
-+|+23.2|+17.5|+10.2|+9.3|xx|xx|+4.9| xxx|
+| Qwen2.5-VL-3B-Instruct   |64.1    |38.9    |75.3    |66.5    |74.6    |21.2   |62.3    | **35.4**|
+| Ocean-R1-3B-Instruct   | **87.3**   |**56.4**    |**85.5**    |**75.8**   |**84.5**    |**23.9**    |**67.2**    |**38.6**|
++|+23.2|+17.5|+10.2|+9.3|+9.9|+2.7|+4.9| +3.2|
 ||||||
 | Qwen2.5-VL-7B-Instruct   |72.0    |47.5    |85.1    |74.5    |82.3    |25.1    |68.2    | 47.9|
 | Ocean-R1-7B-Instruct   | **94.6**   | **69.7**   |**86.8**    |**81.0**   |**87.9**    |**27.8**    |**72.6**    | **49.3**|
@@ -45,18 +50,18 @@ To address these limitations, we propose **Ocean-R1**, a two-stage rule-based RL
 ||||||
 
 <a id="examples"></a>
-| Examples of Reflection Pattern on GeoQA| 
+| Examples of Reflection Patterns on GeoQA| 
 |----------|
-| <span style="color: blue;">[However, this calculation seems to have an error. Let's re-evaluate the problem.]()</span>| 
-| <span style="color: blue;">[However, upon re-evaluating the correct proportionality and area relationships]()</span> | 
-| <span style="color: blue;">Since CP = CD - DP = 8 - 16 = -8, [which is not possible, we need to re-evaluate the setup.]()</span> | 
-| <span style="color: blue;">[However, this calculation is incorrect. Let's re-evaluate:]() </span>| 
-| Therefore, angle A = angle ADO. Given that angle D = 50°, we have angle A = angle ADO = 50°. Since DE is parallel to OA, we have angle AOD = angle A + angle ADO = 100°. Since CD is the diameter, we have angle C = 90° - angle AOD = 90° - 100° = -10°. <span style="color: blue;">[However, this calculation is incorrect. Let's re-evaluate:]() </span>Since DE is parallel to OA, we have angle AOD = 2 * angle D = 100°. Therefore, angle C = 90° - angle AOD = 90° - 100° = -10°. <span style="color: blue;">[This is still incorrect. Let's re-evaluate correctly:]() </span>| 
-| <span style="color: blue;">[However, this contradicts the given conditions. Therefore, we need to re-evaluate the correct proportion,]() which is \( \frac{AB}{AC} = \frac{AD}{AB} \). | 
-| Therefore, \( PM = \frac{1}{2} AD \) and \(QN = \frac{1}{2} BC \). Given that \( MP + NQ = 14 \) and \( AC + BC = 18 \), we have \( \frac{1}{2} AC + \frac{1}{2} BC = 14 \). Thus, \( AC + BC = 28 \). <span style="color: blue;">[However, we are given that \( AC + BC = 18 \), which seems to be a contradiction. Revising the given conditions, we use the correct relationship:]() | 
-| <span style="color: blue;">[However, there seems to be a discrepancy with the provided options. Given the options, it appears there might be a misinterpretation or a different approach needed. But based on the standard geometric properties and calculations, the correct answer should be:]() |
-| <span style="color: blue;">[Given the options, it seems there might be a misunderstanding in the problem statement or the options provided.]() | 
-| <span style="color: blue;">[However, there seems to be a miscalculation in the above reasoning. Let's re-evaluate using the properties of]() |
+| <span style="color: blue;">**However, this calculation seems to have an error. Let's re-evaluate the problem.****</span>| 
+| <span style="color: blue;">However, upon rechecking the problem constraints and the logical steps, it appears there was a misinterpretation in the problem statement or a need to re-evaluate the given information. Given the problem constraints and the standard geometric properties, the correct answer should be recalculated as follows:**</span> | 
+| <span style="color: blue;">Since CP = CD - DP = 8 - 16 = -8, **which is not possible, we need to re-evaluate the setup.**</span> | 
+| <span style="color: blue;">**However, this calculation is incorrect. Let's re-evaluate:**() </span>| 
+| Therefore, angle A = angle ADO. Given that angle D = 50°, we have angle A = angle ADO = 50°. Since DE is parallel to OA, we have angle AOD = angle A + angle ADO = 100°. Since CD is the diameter, we have angle C = 90° - angle AOD = 90° - 100° = -10°. <span style="color: blue;">**However, this calculation is incorrect. Let's re-evaluate:** </span>Since DE is parallel to OA, we have angle AOD = 2 * angle D = 100°. Therefore, angle C = 90° - angle AOD = 90° - 100° = -10°. <span style="color: blue;">**This is still incorrect. Let's re-evaluate correctly:**| 
+| <span style="color: blue;">**However, this contradicts the given conditions. Therefore, we need to re-evaluate the correct proportion,** which is \( \frac{AB}{AC} = \frac{AD}{AB} \). | 
+| Therefore, \( PM = \frac{1}{2} AD \) and \(QN = \frac{1}{2} BC \). Given that \( MP + NQ = 14 \) and \( AC + BC = 18 \), we have \( \frac{1}{2} AC + \frac{1}{2} BC = 14 \). Thus, \( AC + BC = 28 \). <span style="color: blue;">**However, we are given that \( AC + BC = 18 \), which seems to be a contradiction. Revising the given conditions, we use the correct relationship:** | 
+| <span style="color: blue;">**However, there seems to be a discrepancy with the provided options. Given the options, it appears there might be a misinterpretation or a different approach needed. But based on the standard geometric properties and calculations, the correct answer should be:** |
+| <span style="color: blue;">**Given the options, it seems there might be a misunderstanding in the problem statement or the options provided.** | 
+| <span style="color: blue;">**However, there seems to be a miscalculation in the above reasoning. Let's re-evaluate using the properties of...** |
 
 - **Visual Aha Moment**: Our findings indicate that in multimodal reasoning scenarios, rule-based reinforcement learning (RL) training of the Qwen2.5vl-3B-Instruct and Qwen2.5vl-7B-Instruct models can elicit emergent behaviors such as reflection and verification, which are akin to "Aha Moment". Table [1](#examples) presents specific instances of these reflective and verification behaviors.
 
@@ -75,9 +80,9 @@ To address these limitations, we propose **Ocean-R1**, a two-stage rule-based RL
 <a id="cases"></a>
 |Image|Question|Ground Truth |Ocean-R1-Instruct (3B or 7B)|Verify|
 |:----------:|:----------|:----------|:----------|:-----:|
-|![](./assets/319.png)|As shown in the figure, the straight line BC is tangent to circle O at point A, AD is the chord of circle O. Connect OD, if angle DAC = 50.0, then the degree of angle ODA is () |40°|\<think>\nTo solve for the measure of angle ODA, we need to use some properties of circles and tangents.\n\n1. Since the line \\(BC\\) is tangent to the circle at point \\(A\\), the radius \\(OA\\) is perpendicular to \\(BC\\). Therefore, \\(\\angle OAB = 90^\\circ\\).\n\n2. Since \\(AD\\) is a chord and \\(OA\\) is a radius, \\(\\angle AOD = 2 \\times \\angle DAC\\) because the angle at the center is twice the angle at the circumference subtended by the same arc. Given that \\(\\angle DAC = 50^\\circ\\), we have:\n   \\[\n   \\angle AOD = 2 \\times \\angle DAC = 2 \\times 50^\\circ = 100^\\circ\n   \\]\n\n3. Since \\(OA \\perp BC\\), \\(\\angle OAB = 90^\\circ\\). Therefore, in \\(\\triangle OAD\\), we have:\n   \\[\n   \\angle ODA = 180^\\circ - \\angle OAD - \\angle AOD = 180^\\circ - 90^\\circ - 100^\\circ = 180^\\circ - 190^\\circ = 80^\\circ\n   \\]\n\nThus, the measure of angle \\(ODA\\) is \\(\\boxed{40^\\circ}\\).\n\n<span style="color: blue;">[However, upon reviewing the options and the problem statement, it seems there might be a discrepancy.]()</span> Given the options, the correct measure of \\(\\angle ODA\\) should be derived from the properties of the circle and the given angles. Since \\(\\angle AOD = 100^\\circ\\) and knowing that \\(OA \\perp BC\\), the correct measure of \\(\\angle ODA\\) should be:\n\\[\n\\angle ODA = 90^\\circ - \\angle DAC = 90^\\circ - 50^\\circ = 40^\\circ\n\\]\n\nTherefore, the correct answer is \\(\\boxed{40^\\circ}\\).\n\</think>\n\<answer>\n40°\n\</answer>|YES|
-|![](./assets/357.png)|As shown in the figure, in the parallelogram ABCD, F is a point on AB, DF intersects AC at point E, if CD = 10.0, frac {AE}{EC}=frac {2.0}{5.0}, then the length of BF is ()|6|\<think>\nSince quadrilateral ABCD is a parallelogram, we have AB = CD = 10. Also, AD parallel BC, which implies ∠DAE = ∠FCE and ∠ADE = ∠CFE. Therefore,△ADE ∼ △CFE. Thus, \\(\\frac{AE}{EC} = \\frac{AD}{FC}\\). Given \\(\\frac{AE}{EC} = \\frac{2}{5}\\), we have \\(\\frac{AD}{FC} = \\frac{2}{5}\\). Since AD = 10, we get \\(FC = \\frac{5 \\times 10}{2} = 25\\). Therefore, \\(BF = AB - AF = 10 - (25 - 10) = 10 - 15 = -5\\). <span style="color: blue;">[However, this calculation seems to have an error. Let's recheck the proportion.]() </span>Since \\(\\frac{AE}{EC} = \\frac{2}{5}\\), we have \\(\\frac{AD}{FC} = \\frac{2}{5}\\). Therefore, \\(FC = \\frac{5 \\times 10}{2} = 25\\). Thus, \\(BF = AB - AF = 10 - (25 - 10) = 6\\). Therefore, the length of BF is 6.\n\</think>\n\n\<answer>\n6\n\</answer>|YES|
-|![](./assets/608.png)|As shown in the figure, CD is the diameter of circle O, chord DE parallel  OA, if the degree of angle D is 50.0, then the degree of angle C is ()|25°|\<think>\nSince OA is the radius, we have OA = OD. Therefore, angle A = angle ADO. Given that angle D = 50°, we have angle A = angle ADO = 50°. Since DE is parallel to OA, we have angle AOD = angle A + angle ADO = 100°. Since CD is the diameter, we have angle C = 90° - angle AOD = 90° - 100° = -10°. <span style="color: blue;">[However, this calculation is incorrect. Let's re-evaluate:]()</span> Since DE is parallel to OA, we have angle AOD = 2 * angle D = 100°. Therefore, angle C = 90° - angle AOD = 90° - 100° = -10°. <span style="color: blue;">[This is still incorrect. Let's re-evaluate correctly: Since DE is parallel to OA, we have angle AOD = 2 * angle D = 100°.]()</span> Therefore, angle C = 90° - angle AOD = 90° - 100° = 20°. Thus, the degree of angle C is 20°.\n\</think>\n\n\<answer>\n20°\n\</answer>|NO|
+|![](./assets/319.png)|As shown in the figure, the straight line BC is tangent to circle O at point A, AD is the chord of circle O. Connect OD, if angle DAC = 50.0, then the degree of angle ODA is () |40°|\<think>\nTo solve for the measure of angle ODA, we need to use some properties of circles and tangents.\n\n1. Since the line \\(BC\\) is tangent to the circle at point \\(A\\), the radius \\(OA\\) is perpendicular to \\(BC\\). Therefore, \\(\\angle OAB = 90^\\circ\\).\n\n2. Since \\(AD\\) is a chord and \\(OA\\) is a radius, \\(\\angle AOD = 2 \\times \\angle DAC\\) because the angle at the center is twice the angle at the circumference subtended by the same arc. Given that \\(\\angle DAC = 50^\\circ\\), we have:\n   \\[\n   \\angle AOD = 2 \\times \\angle DAC = 2 \\times 50^\\circ = 100^\\circ\n   \\]\n\n3. Since \\(OA \\perp BC\\), \\(\\angle OAB = 90^\\circ\\). Therefore, in \\(\\triangle OAD\\), we have:\n   \\[\n   \\angle ODA = 180^\\circ - \\angle OAD - \\angle AOD = 180^\\circ - 90^\\circ - 100^\\circ = 180^\\circ - 190^\\circ = 80^\\circ\n   \\]\n\nThus, the measure of angle \\(ODA\\) is \\(\\boxed{40^\\circ}\\).\n\n<span style="color: blue;">**However, upon reviewing the options and the problem statement, it seems there might be a discrepancy.**</span> Given the options, the correct measure of \\(\\angle ODA\\) should be derived from the properties of the circle and the given angles. Since \\(\\angle AOD = 100^\\circ\\) and knowing that \\(OA \\perp BC\\), the correct measure of \\(\\angle ODA\\) should be:\n\\[\n\\angle ODA = 90^\\circ - \\angle DAC = 90^\\circ - 50^\\circ = 40^\\circ\n\\]\n\nTherefore, the correct answer is \\(\\boxed{40^\\circ}\\).\n\</think>\n\<answer>\n40°\n\</answer>|YES|
+|![](./assets/357.png)|As shown in the figure, in the parallelogram ABCD, F is a point on AB, DF intersects AC at point E, if CD = 10.0, frac {AE}{EC}=frac {2.0}{5.0}, then the length of BF is ()|6|\<think>\nSince quadrilateral ABCD is a parallelogram, we have AB = CD = 10. Also, AD parallel BC, which implies ∠DAE = ∠FCE and ∠ADE = ∠CFE. Therefore,△ADE ∼ △CFE. Thus, \\(\\frac{AE}{EC} = \\frac{AD}{FC}\\). Given \\(\\frac{AE}{EC} = \\frac{2}{5}\\), we have \\(\\frac{AD}{FC} = \\frac{2}{5}\\). Since AD = 10, we get \\(FC = \\frac{5 \\times 10}{2} = 25\\). Therefore, \\(BF = AB - AF = 10 - (25 - 10) = 10 - 15 = -5\\). <span style="color: blue;">**However, this calculation seems to have an error. Let's recheck the proportion.** </span>Since \\(\\frac{AE}{EC} = \\frac{2}{5}\\), we have \\(\\frac{AD}{FC} = \\frac{2}{5}\\). Therefore, \\(FC = \\frac{5 \\times 10}{2} = 25\\). Thus, \\(BF = AB - AF = 10 - (25 - 10) = 6\\). Therefore, the length of BF is 6.\n\</think>\n\n\<answer>\n6\n\</answer>|YES|
+|![](./assets/608.png)|As shown in the figure, CD is the diameter of circle O, chord DE parallel  OA, if the degree of angle D is 50.0, then the degree of angle C is ()|25°|\<think>\nSince OA is the radius, we have OA = OD. Therefore, angle A = angle ADO. Given that angle D = 50°, we have angle A = angle ADO = 50°. Since DE is parallel to OA, we have angle AOD = angle A + angle ADO = 100°. Since CD is the diameter, we have angle C = 90° - angle AOD = 90° - 100° = -10°. <span style="color: blue;">**However, this calculation is incorrect. Let's re-evaluate:**</span> Since DE is parallel to OA, we have angle AOD = 2 * angle D = 100°. Therefore, angle C = 90° - angle AOD = 90° - 100° = -10°. <span style="color: blue;">**This is still incorrect. Let's re-evaluate correctly: Since DE is parallel to OA, we have angle AOD = 2 * angle D = 100°.**</span> Therefore, angle C = 90° - angle AOD = 90° - 100° = 20°. Thus, the degree of angle C is 20°.\n\</think>\n\n\<answer>\n20°\n\</answer>|NO|
 
 
 |Model|Response Length|Reward Score |GeoQA Acc|CVBench Acc|
@@ -143,8 +148,8 @@ We implement customized reward functions in a separate file and specify them usi
 - for single node
 
   ```shell
-  bassh ./verl/examples/grpo_trainer/run_qwen25vl-3b_stage1.sh
-  bassh ./verl/examples/grpo_trainer/run_qwen25vl-3b_stage2.sh
+  bash ./verl/examples/grpo_trainer/run_qwen25vl-3b_stage1.sh
+  bash ./verl/examples/grpo_trainer/run_qwen25vl-3b_stage2.sh
   ```
 
 - for multiple node
@@ -202,8 +207,8 @@ python ./eval/test_qwen2d5vl_rec.py
 python ./eval/test_qwen2d5vl_cvbench.py
 ```
 
-### Math: MathVision, MathVerse and MathVista
-We apply [VLMEvalKit](https://github.com/open-compass/VLMEvalKit) to evaluate the math Benchmarks.
+### Others: OCR Bench, MathVision, MathVerse and MathVista
+We apply [VLMEvalKit](https://github.com/open-compass/VLMEvalKit) to evaluate the other benchmarks.
 
 ## 📋️ TODO
 - Upload Arxiv
