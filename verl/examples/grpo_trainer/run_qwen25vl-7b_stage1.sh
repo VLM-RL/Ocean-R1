@@ -13,15 +13,15 @@ wandb login --relogin $WANDB_API_KEY
 export FORMAT_REWARD_FACTOR=0.1
 export LIMIT_IMAGE_NUM=1
 wandb_project_name='verl_grpo'
-wandb_experiment_name='3B-qwen2d5vl_stage1'
+wandb_experiment_name='7B-qwen2d5vl_stage1'
 kl_coef=0.001
 
 # Paths
-MODEL_PATH="Qwen/Qwen2.5-VL-3B-Instruct"
+MODEL_PATH="Qwen/Qwen2.5-VL-7B-Instruct"
 TRAIN_FILE="{Train Data: stage 1}"
 TEST_FILE="['./data/cvbench_test.parquet','./data/geoqa_test.parquet']"
 
-output_dir=./Qwen2.5-VL-3B-grpo-verl
+output_dir=./Qwen2.5-VL-7B-grpo-verl
 
 GPU_NUMS=`nvidia-smi -L | wc -l`
  

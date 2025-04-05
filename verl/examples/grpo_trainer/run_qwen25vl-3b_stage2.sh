@@ -20,7 +20,7 @@ lr=8e-7
 # Paths
 # MODEL_PATH="Qwen/Qwen2.5-VL-3B-Instruct"
 MODEL_PATH="{Checkpoint from stage 1}"
-TRAIN_FILE="{Train Data: stage 1}"
+TRAIN_FILE="{Train Data: stage 2}"
 TEST_FILE="['./data/cvbench_test.parquet','./data/geoqa_test.parquet']"
 
 output_dir=./Qwen2.5-VL-3B-grpo-verl
@@ -93,6 +93,6 @@ ray job submit --address="http://127.0.0.1:8265" \
     trainer.nnodes=$NNODES \
     trainer.save_freq=50 \
     trainer.test_freq=20 \
-    trainer.total_epochs=15
+    trainer.total_epochs=2
 echo 'job done, now shutdown ray cluster'
 ray stop --force

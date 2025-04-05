@@ -104,7 +104,7 @@ if [ "$master_ip" = "$curr_ip" ]; then
         trainer.nnodes=$NNODES \
         trainer.save_freq=50 \
         trainer.test_freq=20 \
-        trainer.total_epochs=15
+        trainer.total_epochs=2
     echo 'job done, now shutdown ray cluster'
     ray stop --force
 else

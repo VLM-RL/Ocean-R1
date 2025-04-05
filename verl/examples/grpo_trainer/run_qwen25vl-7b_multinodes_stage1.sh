@@ -10,20 +10,19 @@ export WANDB_API_KEY="{Your WANDB API KEY }"
 # login wandb
 wandb login --relogin $WANDB_API_KEY
 
-export FORMAT_REWARD_FACTOR=0.05
+export FORMAT_REWARD_FACTOR=0.1
 export LIMIT_IMAGE_NUM=1
 wandb_project_name='verl_grpo'
-wandb_experiment_name='3B-qwen2d5vl_stage1'
+wandb_experiment_name='7B-qwen2d5vl_stage1'
 kl_coef=0.001
-lr=8e-7
+lr=1e-6
 
 # Paths
-# MODEL_PATH="Qwen/Qwen2.5-VL-3B-Instruct"
-MODEL_PATH="{Checkpoint from stage 1}"
-TRAIN_FILE="{Train Data: stage 2}"
+MODEL_PATH="Qwen/Qwen2.5-VL-7B-Instruct"
+TRAIN_FILE="{Train Data: stage 1}"
 TEST_FILE="['./data/cvbench_test.parquet','./data/geoqa_test.parquet']"
 
-output_dir=./Qwen2.5-VL-3B-grpo-verl
+output_dir=./Qwen2.5-VL-7B-grpo-verl
 
 GPU_NUMS=`nvidia-smi -L | wc -l`
  
@@ -72,7 +71,7 @@ if [ "$master_ip" = "$curr_ip" ]; then
         data.truncation='error' \
         data.image_key=images \
         actor_rollout_ref.model.path=$MODEL_PATH \
-        actor_rollout_ref.actor.optim.lr=1e-6 \
+        actor_rollout_ref.actor.optim.lr=$lr \
         actor_rollout_ref.model.use_remove_padding=True \
         actor_rollout_ref.actor.ppo_mini_batch_size=256 \
         actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu=8 \

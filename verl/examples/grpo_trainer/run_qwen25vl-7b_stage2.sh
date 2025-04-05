@@ -10,18 +10,20 @@ export WANDB_API_KEY="{Your WANDB API KEY }"
 # login wandb
 wandb login --relogin $WANDB_API_KEY
 
-export FORMAT_REWARD_FACTOR=0.1
+export FORMAT_REWARD_FACTOR=0.05
 export LIMIT_IMAGE_NUM=1
 wandb_project_name='verl_grpo'
-wandb_experiment_name='3B-qwen2d5vl_stage1'
+wandb_experiment_name='7B-qwen2d5vl_stage1'
 kl_coef=0.001
+lr=8e-7
 
 # Paths
-MODEL_PATH="Qwen/Qwen2.5-VL-3B-Instruct"
-TRAIN_FILE="{Train Data: stage 1}"
+# MODEL_PATH="Qwen/Qwen2.5-VL-3B-Instruct"
+MODEL_PATH="{Checkpoint from stage 1}"
+TRAIN_FILE="{Train Data: stage 2}"
 TEST_FILE="['./data/cvbench_test.parquet','./data/geoqa_test.parquet']"
 
-output_dir=./Qwen2.5-VL-3B-grpo-verl
+output_dir=./Qwen2.5-VL-7B-grpo-verl
 
 GPU_NUMS=`nvidia-smi -L | wc -l`
  
@@ -37,7 +39,6 @@ echo "WORK_DIR=$WORK_DIR"
 cd $WORK_DIR
 RUNTIME_ENV="${WORK_DIR}/verl/trainer/runtime_env.yaml"
 NNODES=$WORLD_SIZE
-
 
 echo "########### run ray start ###########"
 ray start --head --num-gpus $GPU_NUMS --temp-dir ~/.cache/ray --max-worker-port 12800  --runtime-env-agent-port 20100 --dashboard-agent-grpc-port 20101 --dashboard-agent-listen-port 20102 --metrics-export-port 20103
