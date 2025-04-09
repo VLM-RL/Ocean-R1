@@ -116,7 +116,7 @@ pip install -e .
 ## 🔄 Training
 
 ### Data Preparation
-You can download our training data from [Ocean_R1_visual_data_stage1](https://huggingface.co/datasets/minglingfeng/Ocean_R1_visual_data_stage1) and [Ocean_R1_visual_data_stage2](https://huggingface.co/datasets/minglingfeng/Ocean_R1_visual_data_stage2), also download the validation data from [geoqa_test](https://huggingface.co/datasets/minglingfeng/geoqa_test) and [cvbench_test](https://huggingface.co/datasets/minglingfeng/cvbench_test). Each entry in our datasets is a dictionary organized in the following format. 
+You can download our training data from [Ocean_R1_visual_data_stage1](https://huggingface.co/datasets/minglingfeng/Ocean_R1_visual_data_stage1) and [Ocean_R1_visual_data_stage2](https://huggingface.co/datasets/minglingfeng/Ocean_R1_visual_data_stage2), also download the validation data from [geoqa_test](https://huggingface.co/datasets/minglingfeng/geoqa_test) and [cvbench_test](https://huggingface.co/datasets/minglingfeng/cvbench_test). Refer to `download_data.py` for downloading the datasets and converting them into `parquet` formats. Each entry in our datasets is a dictionary organized in the following format. 
 ```json
 data = {
             "data_source": data_source,
@@ -150,15 +150,25 @@ We implement customized reward functions in a separate file and specify them usi
 - for single node
 
   ```shell
+  ## 3B
   bash ./verl/examples/grpo_trainer/run_qwen25vl-3b_stage1.sh
   bash ./verl/examples/grpo_trainer/run_qwen25vl-3b_stage2.sh
+
+  ## 7B
+  bash ./verl/examples/grpo_trainer/run_qwen25vl-7b_stage1.sh
+  bash ./verl/examples/grpo_trainer/run_qwen25vl-7b_stage2.sh
   ```
 
 - for multiple node
 
   ```shell
+  ## 3B
   bash ./verl/examples/grpo_trainer/run_qwen25vl-3b_multinodes_stage1.sh
   bash ./verl/examples/grpo_trainer/run_qwen25vl-3b_multinodes_stage2.sh
+
+  ## 7B
+  bash ./verl/examples/grpo_trainer/run_qwen25vl-7b_multinodes_stage1.sh
+  bash ./verl/examples/grpo_trainer/run_qwen25vl-7b_multinodes_stage2.sh
   ```
 
 ## 🧪 Evaluation
