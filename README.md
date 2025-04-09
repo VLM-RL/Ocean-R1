@@ -139,7 +139,9 @@ data = {
             }
         }
 ```
-
+Notably, the prompt is:
+`"{Question}\nYou FIRST think about the reasoning process as an internal monologue and then provide the final answer. The reasoning process MUST BE enclosed within <think> </think> tags. The final answer MUST BE in <answer> </answer> tags."
+`
 ### Customized Reward Function
 We implement customized reward functions in a separate file and specify them using `custom_reward_function.path` and `custom_reward_function.name`. Please refer to `./verl/verl/utils/reward_score/custom_reward_fn.py` for more details.
 
@@ -169,7 +171,7 @@ wget https://www.cs.jhu.edu/~zhuowan/zhuowan/SuperCLEVR/to_be_released/images.zi
 unzip images.zip
 
 # change image dir and the model path in the scripts
-python ./eval/test_qwen2vl_counting_superclevr_5k.py
+python ./eval/test_qwen2d5vl_counting_superclevr_5k.py
 
 ```
 
@@ -188,7 +190,7 @@ unzip images.zip
 
 
 # change image dir and the model path in the scripts
-python ./eval/test_qwen2vl_geoqa.py
+python ./eval/test_qwen2d5vl_geoqa.py
 
 ```
 
