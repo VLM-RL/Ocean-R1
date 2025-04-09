@@ -18,7 +18,7 @@ To address these limitations, we propose **Ocean-R1**, a two-stage rule-based RL
 
 
 
-🔥We open-source our complete pipeline to foster further research in this area. We release all our codes, model, data. We apply the awesome [verl](https://github.com/volcengine/verl) framework to train our models. 
+🔥 We apply the awesome [verl](https://github.com/volcengine/verl) framework to train our models. To foster further research in this area, we release all our codes, models, and datasets. 
 - [🤗 Ocean-R1-3B-Instruct](https://huggingface.co/minglingfeng/Ocean_R1_3B_Instruct)
 - [🤗 Ocean-R1-7B-Instruct](https://huggingface.co/minglingfeng/Ocean_R1_7B_Instruct)
 - [🤗 Ocean_R1_visual_data_stage1 (63k)](https://huggingface.co/datasets/minglingfeng/Ocean_R1_visual_data_stage1)
@@ -116,7 +116,7 @@ pip install -e .
 ## 🔄 Training
 
 ### Data Preparation
-You can download our training data from [Ocean_R1_visual_data_stage1](https://huggingface.co/datasets/minglingfeng/Ocean_R1_visual_data_stage1) and [Ocean_R1_visual_data_stage2](https://huggingface.co/datasets/minglingfeng/Ocean_R1_visual_data_stage2). Each entry in our datasets is a dictionary organized in the following format. 
+You can download our training data from [Ocean_R1_visual_data_stage1](https://huggingface.co/datasets/minglingfeng/Ocean_R1_visual_data_stage1) and [Ocean_R1_visual_data_stage2](https://huggingface.co/datasets/minglingfeng/Ocean_R1_visual_data_stage2), also download the validation data from [geoqa_test](https://huggingface.co/datasets/minglingfeng/geoqa_test) and [cvbench_test](https://huggingface.co/datasets/minglingfeng/cvbench_test). Each entry in our datasets is a dictionary organized in the following format. 
 ```json
 data = {
             "data_source": data_source,
